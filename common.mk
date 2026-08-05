@@ -148,12 +148,12 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint-service.xiaomi \
-    libudfpshandler:64
+    android.hardware.biometrics.fingerprint-service.xiaomi
 
 ifeq ($(TARGET_HAS_UDFPS),true)
 PRODUCT_PACKAGES += \
-    FrameworksResUdfps
+    FrameworksResUdfps \
+    libudfpshandler:64
 
 PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.sensors.xiaomi.udfps=true
@@ -472,6 +472,11 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.xiaomi_sm8450.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.xiaomi_sm8450.rc
+
+ifneq ($(TARGET_IS_TABLET),true)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.xiaomi_sm8450.touch-fod.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.xiaomi_sm8450.touch-fod.rc
+endif
 
 ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_COPY_FILES += \
