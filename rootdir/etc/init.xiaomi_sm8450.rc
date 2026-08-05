@@ -119,9 +119,6 @@ on property:sys.boot_completed=1
     # Set thermal mode to mgame
     write /sys/devices/virtual/thermal/thermal_message/sconfig 20
 
-on property:persist.sys.xtra-daemon.enabled=*
-    restart loc_launcher
-
 service vendor.nv_mac /vendor/bin/nv_mac
     class late_start
     user system
