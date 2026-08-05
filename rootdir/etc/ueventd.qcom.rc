@@ -192,6 +192,9 @@ subsystem mem_buf_vm
 /dev/bus/usb/*                      0660  root    usb
 /dev/hidraw*                        0660  system  system
 
+# Nanosic keyboard cover
+/dev/nanodev0                       0660  system  system
+
 # wlan
 /dev/wcnss_wlan           0660   system     system
 /dev/wcnss_ctrl           0660   system     system
