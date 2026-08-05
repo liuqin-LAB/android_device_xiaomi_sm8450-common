@@ -84,6 +84,23 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('.+media_codecs_(google_audio|google_c2|google_telephony|vendor_audio).+\n', ''),
     'vendor/etc/vintf/manifest/c2_manifest_vendor.xml': blob_fixup()
         .regex_replace('.+dolby.+\n', ''),
+    'vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml': blob_fixup()
+        .regex_replace(
+            '    <hal format="aidl">\n'
+            '        <name>android\\.hardware\\.security\\.secureclock</name>\n'
+            '        <fqname>ISecureClock/default</fqname>\n'
+            '    </hal>\n'
+            '</manifest>',
+            '    <hal format="aidl">\n'
+            '        <name>android.hardware.security.secureclock</name>\n'
+            '        <fqname>ISecureClock/default</fqname>\n'
+            '    </hal>\n'
+            '    <hal format="aidl">\n'
+            '        <name>android.hardware.security.keymint</name>\n'
+            '        <fqname>IRemotelyProvisionedComponent/default</fqname>\n'
+            '    </hal>\n'
+            '</manifest>',
+        ),
     (
         'vendor/lib64/libdpps.so',
         'vendor/lib64/libsnapdragoncolor-manager.so',
